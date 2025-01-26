@@ -9,6 +9,7 @@ class BottomNavAnimation extends StatelessWidget {
   final Color? backgroundColor;
   final Color? selectedItemColor;
   final Color? unselectedItemColor;
+  final BorderRadius? borderRadius;
 
   BottomNavAnimation({
     Key? key,
@@ -17,6 +18,7 @@ class BottomNavAnimation extends StatelessWidget {
     this.backgroundColor,
     this.selectedItemColor,
     this.unselectedItemColor,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -27,19 +29,25 @@ class BottomNavAnimation extends StatelessWidget {
     return GetBuilder<BottomNavController>(
       builder: (controller) {
         return Scaffold(
-          body: AnimatedSwitcher(
+          body: Obx(() {
+            return AnimatedSwitcher(
             duration: Duration(milliseconds: 300),
             transitionBuilder: (Widget child, Animation<double> animation) {
               return FadeTransition(opacity: animation, child: child);
             },
             child: controller.pages[controller.currentIndex.value],
-          ),
-          bottomNavigationBar: Container(
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.all(10),
+          );
+          }),
+          bottomNavigationBar: Obx(() {
+            return Container(
+              height: Get.height * .1,
+              width: Get.width ,
+            // padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(5),
+            margin: EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: backgroundColor ?? Colors.black,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+              borderRadius: borderRadius ?? BorderRadius.vertical(top: Radius.circular(30)),
               /* boxShadow: [
                 BoxShadow(color: Colors.black38, blurRadius: 10)
               ], */
@@ -47,7 +55,7 @@ class BottomNavAnimation extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
               child: BottomNavigationBar(
-                backgroundColor: Colors.transparent,
+                backgroundColor: backgroundColor ?? Colors.black,
                 type: BottomNavigationBarType.fixed,
                 currentIndex: controller.currentIndex.value,
                 selectedItemColor: selectedItemColor ?? Colors.white,
@@ -56,7 +64,8 @@ class BottomNavAnimation extends StatelessWidget {
                 items: items,
               ),
             ),
-          ),
+          );
+          })
         );
       },
     );

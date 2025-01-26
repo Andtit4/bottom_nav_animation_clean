@@ -29,9 +29,10 @@ class MyApp extends StatelessWidget {
             Center(child: Text('Add')),
             Center(child: Text('Settings')),
           ],
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.black,
           selectedItemColor: Colors.orange,
           unselectedItemColor: Colors.white70,
+          borderRadius: BorderRadius.circular(0),
         ),
       ),
     );
