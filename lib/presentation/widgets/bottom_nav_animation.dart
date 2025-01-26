@@ -7,7 +7,7 @@ class BottomNavAnimation extends StatelessWidget {
   final List<BottomNavigationBarItem> items;
   final List<Widget> pages;
 
-  BottomNavAnimation({Key? key, required this.items, required this.pages}) : super(key: key);
+  const BottomNavAnimation({super.key, required this.items, required this.pages});
 
   @override
   Widget build(BuildContext context) {
