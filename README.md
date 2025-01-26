@@ -10,29 +10,33 @@ Pour utiliser ce plugin, ajoutez-le à votre `pubspec.yaml` dans la section `dep
 dependencies:
   flutter:
     sdk: flutter
-  bottom_nav_animation_clean: ^1.0.0
+  bottom_nav_animation_clean: ^2.0.1
+```
 
-flutter pub get
+## Exemple d'utilisation
 
+```dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bottom_nav_animation_clean/bottom_nav_animation_clean.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('BottomNavAnimationClean Example'),
+          title: const Text('BottomNavAnimationClean Example'),
         ),
         body: BottomNavAnimation(
           // Liste des éléments de la barre de navigation
-          items: [
+          items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.list), label: 'List'),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
@@ -40,7 +44,7 @@ class MyApp extends StatelessWidget {
             BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
           ],
           // Liste des pages à afficher
-          pages: [
+          pages: const [
             Center(child: Text('Home')),
             Center(child: Text('List')),
             Center(child: Text('Search')),
@@ -56,3 +60,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+```
+
+## Capture d'écran
+
+![Exemple BottomNavAnimationClean](screenshots/example.gif)
