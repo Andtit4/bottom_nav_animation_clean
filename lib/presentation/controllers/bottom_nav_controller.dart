@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// lib/presentation/controllers/bottom_nav_controller.dart
 import 'package:get/get.dart';
 
 class BottomNavController extends GetxController {
@@ -11,4 +12,8 @@ class BottomNavController extends GetxController {
     }
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+  }
 }
