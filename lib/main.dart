@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.black,
           selectedItemColor: Colors.orange,
           unselectedItemColor: Colors.white70,
-          borderRadius: BorderRadius.circular(0),
+          borderRadius: BorderRadius.circular(30),
         ),
       ),
     );

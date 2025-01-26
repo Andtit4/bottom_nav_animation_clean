@@ -10,6 +10,9 @@ class BottomNavAnimation extends StatelessWidget {
   final Color? selectedItemColor;
   final Color? unselectedItemColor;
   final BorderRadius? borderRadius;
+  final double? width;
+  final double? height;
+  final bool? showLabels;
 
   BottomNavAnimation({
     Key? key,
@@ -19,6 +22,9 @@ class BottomNavAnimation extends StatelessWidget {
     this.selectedItemColor,
     this.unselectedItemColor,
     this.borderRadius,
+    this.height,
+    this.width,
+    this.showLabels
   }) : super(key: key);
 
   @override
@@ -40,8 +46,8 @@ class BottomNavAnimation extends StatelessWidget {
           }),
           bottomNavigationBar: Obx(() {
             return Container(
-              height: Get.height * .1,
-              width: Get.width ,
+              height: height ??  Get.height * .1,
+              width: width ?? Get.width ,
             // padding: EdgeInsets.all(10),
             padding: EdgeInsets.all(5),
             margin: EdgeInsets.all(20),
@@ -53,8 +59,10 @@ class BottomNavAnimation extends StatelessWidget {
               ], */
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+              borderRadius:  borderRadius ?? BorderRadius.vertical(top: Radius.circular(30)),
               child: BottomNavigationBar(
+                showSelectedLabels: showLabels ?? false,
+                showUnselectedLabels: showLabels ?? false,
                 backgroundColor: backgroundColor ?? Colors.black,
                 type: BottomNavigationBarType.fixed,
                 currentIndex: controller.currentIndex.value,
